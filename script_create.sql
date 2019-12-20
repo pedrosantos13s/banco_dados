@@ -1,52 +1,55 @@
 /* Criar Tabelas */
-CREATE TABLE aluno
+CREATE TABLE professor
 (
     id INTEGER NOT NULL PRIMARY KEY,
     nome TEXT,
-    telefone TEXT,
-    email TEXT
+    monitorado TEXT
 );
 
 CREATE TABLE turma
 (
-    id INTEGER NOT NULL PRIMARY KEY,
     cod_turma TEXT,
-    nome TEXT
+    professor_id INTEGER,
+    monitor TEXT,
+    FOREIGN KEY (professor_id) REFERENCES professor(id),
+    PRIMARY KEY(professor_id)
 );
 
-CREATE TABLE aluno_cursa_turma
+CREATE TABLE aluno
 (
-    aluno_id INTEGER,
+    nota INTEGER,
+    ser_monitor INTEGER,
     turma_id INTEGER,
-    semestre TEXT,
-    FOREIGN KEY(aluno_id) REFERENCES aluno(id),
     FOREIGN KEY(turma_id) REFERENCES turma(id),
-    PRIMARY KEY(aluno_id, turma_id)
+    PRIMARY KEY(turma_id)
 );
 
-/* Inserir Alunos */
-INSERT INTO aluno
-    (nome, telefone, email)
+/* Inserir professor */
+INSERT INTO professor
+    (id, nome, monitorado)
 VALUES
-    ("Ricarth", "9696", "rrsl");
+    ("1", "Ricarth", "rrsl");
 
-INSERT INTO aluno
-    (nome, telefone, email)
+INSERT INTO professor
+    (id, nome, monitorado)
 VALUES
-    ("Fernando", "5555", "fhac");
-
-INSERT INTO aluno
-    (nome, telefone, email)
-VALUES
-    ("Warley", "1234", "wss");
+    ("2", "Fernando", "fhac");
 
 /* Inserir Turmas */
-INSERT INTO turma
-    (cod_turma, nome)
+
+/*INSERT INTO turma
+    (cod_turma, professor_id, monitor)
 VALUES
-    ("IF969", "Introdução à Programação");
+    ("Python", "1", "rrsl");
 
 INSERT INTO turma
-    (cod_turma, nome)
+    (cod_turma, professor_id, monitor)
 VALUES
-    ("IF968", "Algorítmos e Estrutura de Dados");
+    ("Python2", "2", "fhac");*/
+
+/* Inserir aluno */
+
+/*INSERT INTO aluno
+    (nota, ser_monitor, turma_id)
+VALUES
+    ("8", "0", "1");*/

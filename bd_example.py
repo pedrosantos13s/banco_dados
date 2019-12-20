@@ -8,10 +8,10 @@ cursor = db.cursor()
 
 # Executar DDL
 cursor.execute(
-    "CREATE TABLE AGENDA(id INTEGER NOT NULL PRIMARY KEY, nome TEXT, telefone TEXT)")
+    "CREATE TABLE AGENDA(id INTEGER NOT NULL PRIMARY KEY, nome TEXT, turma TEXT)")
 
 # Executar INSERT
-cursor.execute("INSERT INTO AGENDA(nome,telefone) values (?,?)",
+cursor.execute("INSERT INTO AGENDA(nome,turma) values (?,?)",
                ("Ricarth", "99696"))
 
 # Executar CONSULTA
